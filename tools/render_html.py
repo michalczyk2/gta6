@@ -15,13 +15,17 @@ post.json:
     {"kind": "cta",    "title": "...", "options": [["Standard", "$79.99"], ["Ultimate", "$99.99"]], "body": "..."}
   ]
 }
+Background photos: put .jpg files in assets/bg/. Post-level "photos": true gives every slide a photo
+background (cover/cta strong, content slides dimmed). Per slide, "bg": "<filename>" picks a specific photo,
+"bg": "none" disables it. Without an explicit choice, photos are picked deterministically per post and slide.
 Every text field may contain emoji. Keep text short; the renderer auto-shrinks headlines to fit.
 """
-import html, json, os, sys
+import hashlib, html, json, os, sys
 from playwright.sync_api import sync_playwright
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FONTS = os.path.join(HERE, "fonts")
+BGDIR = os.path.join(os.path.dirname(HERE), "assets", "bg")
 HANDLE = "@troche_niepowaznie"
 PALETTES = [
     ("#ff2e88", "#ff9a3c", "#7b2cff"),
@@ -43,6 +47,10 @@ CSS = """
 html,body{width:1080px;height:1350px;background:var(--bg);overflow:hidden}
 body{font-family:Inter,'Noto Color Emoji',sans-serif;color:var(--text);position:relative}
 .bg{position:absolute;inset:0;overflow:hidden}
+.photo{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.photo.strong::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,16,.55) 0%%,rgba(10,9,16,.15) 35%%,rgba(10,9,16,.55) 65%%,rgba(10,9,16,.92) 100%%)}
+.photo.dim{filter:saturate(1.1)}
+.photo.dim::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,16,.66),rgba(10,9,16,.80) 50%%,rgba(10,9,16,.93))}
 .bg .blob{position:absolute;border-radius:50%%;filter:blur(120px);opacity:.55}
 .bg .b1{width:760px;height:760px;background:var(--a);left:-260px;top:-220px}
 .bg .b2{width:700px;height:700px;background:var(--b);right:-280px;bottom:-200px;opacity:.45}
@@ -106,6 +114,20 @@ FIT_JS = """
 """
 
 
+def photo_for(s, i, key, photos_on):
+    choice = s.get("bg")
+    if choice == "none" or (not photos_on and not choice):
+        return ""
+    files = sorted(f for f in os.listdir(BGDIR) if f.lower().endswith((".jpg", ".jpeg", ".png"))) if os.path.isdir(BGDIR) else []
+    if not files:
+        return ""
+    if not choice or choice not in files:
+        h = int(hashlib.md5(key.encode()).hexdigest(), 16)
+        choice = files[(h + i * 7) % len(files)]
+    strong = s["kind"] in ("cover", "cta")
+    return f'<div class="photo {"strong" if strong else "dim"}" style="background-image:url(\'file://{os.path.join(BGDIR, choice)}\')"></div>'
+
+
 def bg():
     return '<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div><div class="grain"></div><div class="vignette"></div></div>'
 
@@ -118,9 +140,12 @@ def chrome(i, n):
     return s
 
 
-def slide_html(s, i, n):
+def slide_html(s, i, n, key="", photos_on=False):
     k = s["kind"]
-    out = bg()
+    ph = photo_for(s, i, key, photos_on)
+    out = ph + bg()
+    if ph:
+        out = out.replace('<div class="bg">', '<div class="bg" style="opacity:.35">')
     src = f'<div class="source">Source: {e(s["source"])}</div>' if s.get("source") else ""
     if k == "cover":
         out += f'<div class="outline" style="font-size:520px;left:-40px;top:560px">{e(s.get("big",""))}</div>'
@@ -184,13 +209,15 @@ def main(post, outdir):
     a, b, c = PALETTES[data.get("palette", 0) % len(PALETTES)]
     css = CSS % {"f": FONTS, "a": a, "b": b, "c": c}
     sl = data["slides"]
+    key = os.path.basename(os.path.dirname(os.path.abspath(post)))
+    photos_on = data.get("photos", False)
     with sync_playwright() as p:
         br = p.chromium.launch()
         pg = br.new_page(viewport={"width": 1080, "height": 1350})
         for i, s in enumerate(sl, 1):
             tmp = os.path.join(outdir, "_slide.html")
             with open(tmp, "w") as fh:
-                fh.write(f"<html><head><meta charset='utf-8'><style>{css}</style></head><body>{slide_html(s, i, len(sl))}</body></html>")
+                fh.write(f"<html><head><meta charset='utf-8'><style>{css}</style></head><body>{slide_html(s, i, len(sl), key, photos_on)}</body></html>")
             pg.goto("file://" + os.path.abspath(tmp))
             pg.evaluate("document.fonts.ready.then(() => true)")
             pg.evaluate(FIT_JS)
