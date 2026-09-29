@@ -1,20 +1,21 @@
 {
-  "swipe": "swipe →",
   "palette": 0,
   "slides": [
     {
       "kind": "cover",
       "big": "50",
-      "title": "DAYS UNTIL GTA 6",
-      "body": "Everything that dropped this week",
+      "title": "Days until GTA 6",
+      "body": "Everything that dropped this week 👇",
+      "sticker": "NEW INFO 🔥",
       "strip": "NOV 19, 2026  ·  PS5  ·  XBOX SERIES X|S"
     },
     {
       "kind": "news",
       "num": "01",
       "tag": "New info",
+      "emoji": "🌪️",
       "title": "14 pages. 12 new screenshots.",
-      "body": "Game Informer's new cover story is all GTA 6: real weather systems, storms and tons of wildlife across Leonida.",
+      "body": "Game Informer's cover story is all GTA 6: real weather systems, storms and tons of wildlife across Leonida.",
       "punch": "Florida Man now comes with a weather forecast.",
       "source": "Game Informer"
     },
@@ -23,25 +24,25 @@
       "num": "02",
       "tag": "Collector's box",
       "big": "$400",
-      "title": "Game not included.",
+      "title": "Game not included 💀",
       "body": "The $399.99 collector's box launches on November 19. The game itself? Sold separately.",
       "punch": "Premium air. Limited edition.",
       "source": "Rockstar Games"
     },
     {
-      "kind": "news",
-      "num": "03",
-      "tag": "PC players",
-      "title": "Still no PC version.",
-      "body": "GTA 6 launches on PS5 and Xbox Series X|S only. Rockstar's past PC ports arrived 12 to 19 months after console.",
-      "punch": "See you in 2028, PC gang.",
+      "kind": "versus",
+      "tag": "03 · Platforms",
+      "title": "Console vs PC",
+      "left": ["PS5 / XBOX", "✅ Nov 19, 2026", "✅ Day one"],
+      "right": ["PC", "❌ Not announced", "⏳ Past ports: 12–19 months later"],
+      "punch": "See you in 2028, PC gang 🥲",
       "source": "Rockstar Games"
     },
     {
       "kind": "cta",
       "title": "Which one are you buying?",
       "options": [["Standard", "$79.99"], ["Ultimate", "$99.99"]],
-      "body": "Drop it in the comments.\nFollow for daily GTA 6 news."
+      "body": "Drop it in the comments 👇\nFollow for daily GTA 6 news."
     }
   ]
 }

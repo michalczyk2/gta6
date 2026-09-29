@@ -2,5 +2,6 @@
 
 Graphics and tooling for the @troche_niepowaznie Instagram account.
 
-- `tools/render.py` renders a carousel from `post.json`: `python3 tools/render.py posts/<date>/post.json posts/<date>`
+- `tools/render_html.py` (main) renders a carousel from `post.json` with headless Chromium: `python3 tools/render_html.py posts/<date>/post.json posts/<date>`. Slide kinds and fields are documented at the top of the file.
+- `tools/render.py` is the older Pillow renderer, kept as a fallback.
 - `posts/<date>/` holds each day's slides, post.json and caption.txt
