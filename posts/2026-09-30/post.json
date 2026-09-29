@@ -7,7 +7,8 @@
       "title": "Days until GTA 6",
       "body": "Everything that dropped this week 👇",
       "sticker": "NEW INFO 🔥",
-      "strip": "NOV 19, 2026  ·  PS5  ·  XBOX SERIES X|S"
+      "strip": "NOV 19, 2026  ·  PS5  ·  XBOX SERIES X|S",
+      "bg": "motel-pool-cars.jpg"
     },
     {
       "kind": "news",
@@ -17,7 +18,8 @@
       "title": "14 pages. 12 new screenshots.",
       "body": "Game Informer's cover story is all GTA 6: real weather systems, storms and tons of wildlife across Leonida.",
       "punch": "Florida Man now comes with a weather forecast.",
-      "source": "Game Informer"
+      "source": "Game Informer",
+      "bg": "swamp-mangroves-airboat.jpg"
     },
     {
       "kind": "stat",
@@ -27,22 +29,43 @@
       "title": "Game not included 💀",
       "body": "The $399.99 collector's box launches on November 19. The game itself? Sold separately.",
       "punch": "Premium air. Limited edition.",
-      "source": "Rockstar Games"
+      "source": "Rockstar Games",
+      "bg": "marina-yachts-sunset.jpg"
     },
     {
       "kind": "versus",
       "tag": "03 · Platforms",
       "title": "Console vs PC",
-      "left": ["PS5 / XBOX", "✅ Nov 19, 2026", "✅ Day one"],
-      "right": ["PC", "❌ Not announced", "⏳ Past ports: 12–19 months later"],
+      "left": [
+        "PS5 / XBOX",
+        "✅ Nov 19, 2026",
+        "✅ Day one"
+      ],
+      "right": [
+        "PC",
+        "❌ Not announced",
+        "⏳ Past ports: 12–19 months later"
+      ],
       "punch": "See you in 2028, PC gang 🥲",
-      "source": "Rockstar Games"
+      "source": "Rockstar Games",
+      "bg": "rooftop-gym-purple.jpg"
     },
     {
       "kind": "cta",
       "title": "Which one are you buying?",
-      "options": [["Standard", "$79.99"], ["Ultimate", "$99.99"]],
-      "body": "Drop it in the comments 👇\nFollow for daily GTA 6 news."
+      "options": [
+        [
+          "Standard",
+          "$79.99"
+        ],
+        [
+          "Ultimate",
+          "$99.99"
+        ]
+      ],
+      "body": "Drop it in the comments 👇\nFollow for daily GTA 6 news.",
+      "bg": "sports-car-bay.jpg"
     }
-  ]
+  ],
+  "photos": true
 }

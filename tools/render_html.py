@@ -67,7 +67,7 @@ body{font-family:Inter,'Noto Color Emoji',sans-serif;color:var(--text);position:
 .swipe{position:absolute;right:84px;bottom:64px;font:700 28px Inter;padding:14px 28px;border-radius:40px;border:2px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);background:rgba(255,255,255,.06);z-index:5}
 .source{position:absolute;left:84px;bottom:78px;font:600 24px Inter;color:var(--muted);z-index:5}
 .content{position:absolute;left:84px;right:84px;top:150px;bottom:150px;display:flex;flex-direction:column;justify-content:center;z-index:4}
-.grad{background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{filter:drop-shadow(0 4px 22px rgba(0,0,0,.75));background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
 .pill{align-self:flex-start;font:900 26px Inter;letter-spacing:1.5px;text-transform:uppercase;color:#0a0910;padding:12px 24px;border-radius:40px;background:linear-gradient(90deg,var(--a),var(--b));margin-bottom:44px;box-shadow:0 10px 40px -10px var(--a)}
 .title{font-family:Anton;text-transform:uppercase;line-height:1.02;letter-spacing:.5px;text-shadow:0 6px 30px rgba(0,0,0,.35)}
 .body{font:400 38px/1.45 Inter;color:#dcd7e4;margin-top:34px}
@@ -124,7 +124,7 @@ def photo_for(s, i, key, photos_on):
     if not choice or choice not in files:
         h = int(hashlib.md5(key.encode()).hexdigest(), 16)
         choice = files[(h + i * 7) % len(files)]
-    strong = s["kind"] in ("cover", "cta")
+    strong = s["kind"] == "cover"
     return f'<div class="photo {"strong" if strong else "dim"}" style="background-image:url(\'file://{os.path.join(BGDIR, choice)}\')"></div>'
 
 
