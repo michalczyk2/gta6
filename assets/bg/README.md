@@ -9,3 +9,6 @@ Pick by subject with "bg" in post.json:
 - marina-yachts-sunset, marina-promenade-purple: money, luxury, prices, editions
 - infinity-pool-sunset, infinity-pool-teal: luxury, rich life, collector's items
 - rooftop-gym-blue, rooftop-gym-orange, rooftop-gym-purple: character stats, fitness, "grind", comparisons
+- nightclub-rooftop-party, rooftop-pool-night, club-entrance-supercars: nightlife, parties, luxury, social/online features
+- heist-armored-truck, robbery-store-getaway, jewelry-heist-escape: heists, crime, missions, Jason & Lucia's story, wanted level, police
+- classic-car-bridge-night, supercars-waterfront-night, supercar-bay-neon: cars, vehicles, driving, night covers
