@@ -1,0 +1,19 @@
+{
+  "featured": [
+    {"label": "Official GTA VI page", "url": "https://www.rockstargames.com/VI"},
+    {"label": "Rockstar Newswire", "url": "https://www.rockstargames.com/newswire"},
+    {"label": "Release date announcement (Nov 19, 2026)", "url": "https://www.rockstargames.com/newswire/article/ak3ak31a49a221/grand-theft-auto-vi-is-now-set-to-launch-november-19-2026"}
+  ],
+  "posts": [
+    {
+      "date": "2026-09-30",
+      "title": "50 days to GTA 6: Game Informer cover story, $400 collector's box, still no PC",
+      "cover": "https://raw.githubusercontent.com/michalczyk2/troche-niepowaznie-media-/main/posts/2026-09-30/p1.jpg",
+      "sources": [
+        {"label": "GamingBible: Game Informer's GTA 6 cover story", "url": "https://www.gamingbible.com/news/gta-6-new-info-game-informer-779053-20260927"},
+        {"label": "TalkEsport: 50-day countdown, prices, platforms", "url": "https://www.talkesport.com/news/gta-6-release-date-update-50-days-november-19/"},
+        {"label": "Rockstar: GTA VI launches November 19, 2026", "url": "https://www.rockstargames.com/newswire/article/ak3ak31a49a221/grand-theft-auto-vi-is-now-set-to-launch-november-19-2026"}
+      ]
+    }
+  ]
+}

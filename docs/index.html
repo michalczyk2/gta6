@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GTA 6 Daily News · @troche_niepowaznie</title>
+<meta name="description" content="Daily GTA 6 news, a bit unserious. Sources for every post and the countdown to November 19, 2026.">
+<meta property="og:title" content="GTA 6 Daily News · @troche_niepowaznie">
+<meta property="og:description" content="Sources for every post + countdown to GTA 6.">
+<meta property="og:image" content="hero.jpg">
+<style>
+@font-face{font-family:Anton;src:url(fonts/Anton.ttf);font-display:swap}
+@font-face{font-family:Inter;font-weight:400;src:url(fonts/Inter-Regular.ttf);font-display:swap}
+@font-face{font-family:Inter;font-weight:600 700;src:url(fonts/Inter-SemiBold.ttf);font-display:swap}
+@font-face{font-family:Inter;font-weight:800 900;src:url(fonts/Inter-Black.ttf);font-display:swap}
+:root{--a:#ff2e88;--b:#ff9a3c;--bg:#0a0910;--card:rgba(24,20,34,.72);--line:rgba(255,255,255,.12);--text:#f7f3ee;--muted:#a39eb1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh}
+.hero{position:relative;height:340px;background:url(hero.jpg) center/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,16,.2),rgba(10,9,16,.55) 55%,var(--bg))}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 48px;position:relative;z-index:2}
+.head{margin-top:-120px;text-align:center}
+.avatar{width:104px;height:104px;border-radius:50%;border:3px solid var(--a);box-shadow:0 0 30px rgba(255,46,136,.5)}
+h1{font-family:Anton,sans-serif;font-weight:400;font-size:40px;letter-spacing:.5px;margin-top:10px;text-transform:uppercase}
+.handle{color:var(--muted);font-weight:600}
+.count{margin:22px 0 8px;display:flex;justify-content:center;gap:10px}
+.count div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px;min-width:74px;backdrop-filter:blur(12px)}
+.count b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:34px;background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.count span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:800}
+.sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:22px}
+.btn{display:block;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:10px 0;font-weight:600;transition:transform .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px);border-color:var(--a)}
+.btn.primary{background:linear-gradient(90deg,var(--a),var(--b));color:#0a0910;border:0;font-weight:800;text-align:center}
+h2{font-family:Anton,sans-serif;font-weight:400;font-size:26px;margin:34px 0 12px;text-transform:uppercase;letter-spacing:.5px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin:14px 0}
+.post .top{display:flex;gap:14px;padding:14px;align-items:center}
+.post img{width:76px;height:95px;object-fit:cover;border-radius:12px;flex:none}
+.post .date{font-size:12px;color:var(--a);font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.post .t{font-weight:700;margin-top:4px;line-height:1.35}
+.post ul{list-style:none;border-top:1px solid var(--line)}
+.post li a{display:block;padding:12px 16px;color:var(--text);text-decoration:none;font-size:14px;border-bottom:1px solid var(--line)}
+.post li:last-child a{border-bottom:0}
+.post li a::after{content:" ↗";color:var(--muted)}
+.post li a:hover{background:rgba(255,255,255,.04)}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="hero"></div>
+<main class="wrap">
+  <div class="head">
+    <img class="avatar" src="avatar.jpg" alt="">
+    <h1>GTA 6 Daily News</h1>
+    <div class="handle">@troche_niepowaznie · a bit unserious</div>
+  </div>
+  <div class="count" id="count">
+    <div><b id="d">–</b><span>days</span></div>
+    <div><b id="h">–</b><span>hours</span></div>
+    <div><b id="m">–</b><span>min</span></div>
+  </div>
+  <p class="sub" id="countsub">until GTA 6 · November 19, 2026 · PS5 & Xbox Series X|S</p>
+
+  <a class="btn primary" href="https://www.instagram.com/troche_niepowaznie/">Follow on Instagram</a>
+  <div id="featured"></div>
+
+  <h2>Sources for every post</h2>
+  <div id="posts"></div>
+
+  <p class="foot">Fan-made news page. Not affiliated with Rockstar Games or Take-Two Interactive.<br>🇵🇱 Źródła do każdego posta i odliczanie do premiery GTA 6.</p>
+</main>
+<script>
+(function(){
+  var launch = new Date("2026-11-19T00:00:00-05:00");
+  function tick(){
+    var ms = launch - new Date();
+    if (ms <= 0){ document.getElementById("count").style.display="none"; document.getElementById("countsub").textContent="GTA 6 is out now 🎉"; return; }
+    var d = Math.floor(ms/864e5), h = Math.floor(ms%864e5/36e5), m = Math.floor(ms%36e5/6e4);
+    document.getElementById("d").textContent=d; document.getElementById("h").textContent=h; document.getElementById("m").textContent=m;
+  }
+  tick(); setInterval(tick, 30000);
+
+  function el(tag, attrs, text){ var e=document.createElement(tag); for (var k in attrs||{}) e.setAttribute(k, attrs[k]); if(text!=null) e.textContent=text; return e; }
+  function fmt(s){ var p=s.split("-"); return new Date(+p[0],p[1]-1,+p[2]).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }
+
+  fetch("links.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(data){
+    var f=document.getElementById("featured");
+    (data.featured||[]).forEach(function(l){ f.appendChild(el("a",{class:"btn",href:l.url,target:"_blank",rel:"noopener"},l.label)); });
+    var box=document.getElementById("posts");
+    (data.posts||[]).slice().sort(function(a,b){return a.date<b.date?1:-1;}).forEach(function(p){
+      var card=el("div",{class:"post"}), top=el("div",{class:"top"});
+      if(p.cover) top.appendChild(el("img",{src:p.cover,alt:"",loading:"lazy"}));
+      var info=el("div"); info.appendChild(el("div",{class:"date"},fmt(p.date))); info.appendChild(el("div",{class:"t"},p.title));
+      top.appendChild(info); card.appendChild(top);
+      var ul=el("ul");
+      (p.sources||[]).forEach(function(s){ var li=el("li"); li.appendChild(el("a",{href:s.url,target:"_blank",rel:"noopener"},s.label)); ul.appendChild(li); });
+      card.appendChild(ul); box.appendChild(card);
+    });
+  }).catch(function(){ document.getElementById("posts").textContent="Sources are loading. Check back in a minute."; });
+})();
+</script>
+</body>
+</html>
