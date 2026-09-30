@@ -35,7 +35,7 @@ def main(src, out, label="NEW POST"):
     hint = "Full post on our profile"
     hw = d.textlength(hint, font=f2)
     d.text(((W - hw) / 2, y + card.height + 90), hint, font=f2, fill=(247, 243, 238))
-    h2 = "@gta_vi_zone"
+    h2 = "@gta_6_daily_news"
     f3 = ImageFont.truetype(os.path.join(FD, "Inter-SemiBold.ttf"), 38)
     d.text(((W - d.textlength(h2, font=f3)) / 2, y + card.height + 160), h2, font=f3, fill=(200, 196, 210))
     bg.convert("RGB").save(out, quality=92)
