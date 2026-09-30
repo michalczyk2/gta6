@@ -1,4 +1,4 @@
-# troche-niepowaznie-media
+# gta6
 
 Graphics and tooling for the @gta_6_daily_news Instagram account.
 
