@@ -1,4 +1,4 @@
-"""HTML/CSS carousel renderer (1080x1350) for @troche_niepowaznie, rendered with headless Chromium.
+"""HTML/CSS carousel renderer (1080x1350) for @gta_vi_zone, rendered with headless Chromium.
 
 Usage: python3 tools/render_html.py posts/<date>/post.json posts/<date>
 
@@ -26,7 +26,7 @@ from playwright.sync_api import sync_playwright
 HERE = os.path.dirname(os.path.abspath(__file__))
 FONTS = os.path.join(HERE, "fonts")
 BGDIR = os.path.join(os.path.dirname(HERE), "assets", "bg")
-HANDLE = "@troche_niepowaznie"
+HANDLE = "@gta_vi_zone"
 PALETTES = [
     ("#ff2e88", "#ff9a3c", "#7b2cff"),
     ("#8c46ff", "#ff2e88", "#00d2c8"),

@@ -1,4 +1,4 @@
-"""Editorial-style Instagram carousel renderer (1080x1350) for @troche_niepowaznie.
+"""Editorial-style Instagram carousel renderer (1080x1350) for @gta_vi_zone.
 
 Usage: python3 render.py post.json out_dir
 post.json schema:
@@ -23,7 +23,7 @@ INTER_B = os.path.join(FD, "Inter-Bold.ttf")
 INTER_SB = os.path.join(FD, "Inter-SemiBold.ttf")
 INTER_R = os.path.join(FD, "Inter-Regular.ttf")
 INTER_K = os.path.join(FD, "Inter-Black.ttf")
-HANDLE = "@troche_niepowaznie"
+HANDLE = "@gta_vi_zone"
 
 BG = (10, 9, 14)
 TEXT = (246, 243, 238)
