@@ -12,6 +12,7 @@ HANDLE = "@gta_6_daily_news"
 
 BASE = f"""
 @font-face{{font-family:Anton;src:url('file://{F}/Anton.ttf')}}
+@font-face{{font-family:Anton;src:url('file://{F}/Anton-LatinExt.ttf');unicode-range:U+0100-024F,U+1E00-1EFF}}
 @font-face{{font-family:Inter;font-weight:400;src:url('file://{F}/Inter-Regular.ttf')}}
 @font-face{{font-family:Inter;font-weight:600;src:url('file://{F}/Inter-SemiBold.ttf')}}
 @font-face{{font-family:Inter;font-weight:900;src:url('file://{F}/Inter-Black.ttf')}}
@@ -92,6 +93,14 @@ VS = """
 <div class="handle">{h}</div>
 """
 
+LIST_PL = LIST.replace('Things I did','Rzeczy, które zrobiłem').replace('waiting for GTA 6','czekając na GTA 6') \
+  .replace('Bought GTA 5 on PS3, PS4 AND PS5','Kupiłem GTA 5 na PS3, PS4 I PS5') \
+  .replace('Finished school. Twice.','Skończyłem szkołę. Dwa razy.') \
+  .replace('Got a job. Lost it. Got another one.','Znalazłem pracę. Straciłem. Znalazłem nową.') \
+  .replace('Found my first grey hair','Znalazłem pierwszy siwy włos') \
+  .replace('Booked Nov 19–23 off work','Wziąłem urlop 19–23 listopada') \
+  .replace('Still here. 50 days left.','Dalej tu jestem. Zostało 50 dni.')
+
 
 def main(out):
     out = os.path.abspath(out)
@@ -99,7 +108,7 @@ def main(out):
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 1080, "height": 1920})
-        for name, body in (("meme_sms", SMS), ("meme_list", LIST), ("meme_vs", VS)):
+        for name, body in (("meme_sms", SMS), ("meme_list", LIST), ("meme_vs", VS), ("meme_list_pl", LIST_PL)):
             tmp = os.path.join(out, "_m.html")
             open(tmp, "w").write(f"<html><head><meta charset='utf-8'><style>{BASE}</style></head><body>{body.replace('{bg}', BG).replace('{h}', HANDLE)}</body></html>")
             pg.goto("file://" + tmp)
