@@ -5,6 +5,7 @@ Usage: python3 tools/render_html.py posts/<date>/post.json posts/<date>
 post.json:
 {
   "palette": 0-3,
+  "theme": "police" | "money" | "swamp" | "club" | "ocean" | "fire" | "vice" | "mono"  (or {"a":"#hex","b":"#hex","c":"#hex"}); overrides palette, pick it to match the topic
   "slides": [
     {"kind": "cover",  "big": "50", "title": "DAYS UNTIL GTA 6", "body": "...", "sticker": "NEW INFO 🔥", "strip": "NOV 19 · PS5 · XBOX SERIES X|S"},   (countdown cover, default style)
     {"kind": "cover", "style": "headline", "sticker": "NEW INFO 🔥", "title": "Big punchy headline", "body": "...", "days": 49},   (photo + big headline at bottom)
@@ -37,6 +38,17 @@ PALETTES = [
     ("#ff9a3c", "#ffd84a", "#ff2e88"),
 ]
 
+THEMES = {
+    # topic-matched colour themes: "theme": "<name>" or {"a": "#hex", "b": "#hex", "c": "#hex"}
+    "vice":    {"a": "#ff2e88", "b": "#ff9a3c", "c": "#7b2cff"},   # default neon sunset
+    "police":  {"a": "#ff3040", "b": "#2f6bff", "c": "#ffffff"},   # cops, wanted level, crime news
+    "money":   {"a": "#3ddc84", "b": "#ffd84a", "c": "#0f9d58"},   # prices, editions, sales, heists $$
+    "swamp":   {"a": "#3fd0a6", "b": "#c6ff4a", "c": "#1b6b4a"},   # wildlife, nature, weather, Leonida
+    "club":    {"a": "#b04bff", "b": "#ff4fd8", "c": "#4b6bff"},   # nightlife, parties, music, radio
+    "ocean":   {"a": "#00c2ff", "b": "#7af0ff", "c": "#2a5bff"},   # beaches, boats, water, map
+    "fire":    {"a": "#ff5a1f", "b": "#ffcf33", "c": "#ff1f4b"},   # hype, breaking, explosions, cars
+    "mono":    {"a": "#f7f3ee", "b": "#a19cae", "c": "#ffffff"},   # serious/official announcements
+}
 e = lambda s: html.escape(str(s or ""))
 
 CSS = """
@@ -233,6 +245,10 @@ def main(post, outdir):
     data = json.load(open(post))
     os.makedirs(outdir, exist_ok=True)
     a, b, c = PALETTES[data.get("palette", 0) % len(PALETTES)]
+    th = data.get("theme") or {}
+    if isinstance(th, str):
+        th = THEMES.get(th, {})
+    a, b, c = th.get("a", a), th.get("b", b), th.get("c", c)
     css = CSS % {"f": FONTS, "a": a, "b": b, "c": c}
     sl = data["slides"]
     key = os.path.basename(os.path.dirname(os.path.abspath(post)))
