@@ -1,0 +1,85 @@
+{
+  "palette": 1,
+  "photos": true,
+  "slides": [
+    {
+      "kind": "cover",
+      "big": "49",
+      "title": "Days until GTA 6",
+      "body": "Game Informer just spilled the details 👇",
+      "sticker": "NEW DETAILS 🔥",
+      "strip": "NOV 19, 2026  ·  PS5  ·  XBOX SERIES X|S",
+      "bg": "supercars-waterfront-night.jpg"
+    },
+    {
+      "kind": "stat",
+      "num": "01",
+      "tag": "Wildlife",
+      "big": "170+",
+      "title": "Animal species",
+      "body": "60+ bird types, 30+ land mammals, plus sharks, whales, rays and turtles. Common, rare and legendary.",
+      "punch": "Legendary alligator. Of course.",
+      "source": "Game Informer via MP1st",
+      "bg": "swamp-dock-sunset.jpg"
+    },
+    {
+      "kind": "news",
+      "num": "02",
+      "tag": "Weather",
+      "emoji": "🌀",
+      "title": "Hurricanes confirmed",
+      "body": "Rockstar re-engineered the weather to be localized and persistent: tropical storms, hurricanes and wind that moves hair and debris.",
+      "punch": "Florida forecast: 100% chaos.",
+      "source": "Game Informer via MP1st",
+      "bg": "swamp-purple-dusk.jpg"
+    },
+    {
+      "kind": "list",
+      "tag": "03 · Side activities",
+      "title": "Side hustles confirmed",
+      "items": [
+        "🎣 Fishing & scuba diving",
+        "🛶 Kayaking, jet skis & airboats",
+        "⛳ Mini golf & billiards",
+        "🏋️ Gyms & base jumping",
+        "🏁 Street & off-road racing"
+      ],
+      "source": "Game Informer via MP1st",
+      "bg": "beach-lifeguard-sunset.jpg"
+    },
+    {
+      "kind": "versus",
+      "tag": "04 · Map",
+      "title": "Los Santos vs Leonida",
+      "left": [
+        "GTA 5",
+        "📏 1x map",
+        "📅 2013"
+      ],
+      "right": [
+        "GTA 6",
+        "📏 ~2x map",
+        "📅 Nov 19, 2026"
+      ],
+      "punch": "Bigger map. Same unpaid parking tickets.",
+      "source": "Game Informer via MP1st",
+      "bg": "aerial-bridge-islands.jpg"
+    },
+    {
+      "kind": "cta",
+      "title": "What are you doing first?",
+      "options": [
+        [
+          "Fishing 🎣",
+          "Chill mode"
+        ],
+        [
+          "Street racing 🏁",
+          "Chaos mode"
+        ]
+      ],
+      "body": "Drop it in the comments 👇\nFollow for daily GTA 6 news.",
+      "bg": "classic-car-bridge-night.jpg"
+    }
+  ]
+}

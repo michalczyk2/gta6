@@ -1,0 +1,30 @@
+{
+ "template": "sms",
+ "title": "Urlop na GTA 6",
+ "contact": "Szef 💼",
+ "avatar": "🧔",
+ "time": "Dziś 9:14",
+ "messages": [
+  [
+   "them",
+   "Czemu urlop od 19 do 30 listopada?"
+  ],
+  [
+   "me",
+   "Sprawy rodzinne. Przeprowadzają się do Leonidy"
+  ],
+  [
+   "them",
+   "...tej z GTA 6?"
+  ],
+  [
+   "me",
+   "Mapa jest 2x większa niż w GTA 5. Ktoś musi pomóc nosić kartony"
+  ],
+  [
+   "them",
+   "Dobra. Też biorę wolne 19. 😐"
+  ]
+ ],
+ "bg": "infinity-pool-teal.jpg"
+}

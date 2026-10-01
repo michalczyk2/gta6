@@ -1,0 +1,30 @@
+{
+ "template": "sms",
+ "title": "Days off for GTA 6",
+ "contact": "Boss 💼",
+ "avatar": "🧔",
+ "time": "Today 9:14",
+ "messages": [
+  [
+   "them",
+   "Why did you request Nov 19–30 off?"
+  ],
+  [
+   "me",
+   "Family stuff. They're moving to Leonida"
+  ],
+  [
+   "them",
+   "...the GTA 6 place?"
+  ],
+  [
+   "me",
+   "The map is 2x bigger than GTA 5. They need help with the boxes"
+  ],
+  [
+   "them",
+   "Fine. I'm off on the 19th too 😐"
+  ]
+ ],
+ "bg": "infinity-pool-teal.jpg"
+}
