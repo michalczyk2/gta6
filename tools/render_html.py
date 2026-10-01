@@ -85,7 +85,7 @@ body{font-family:Inter,'Noto Color Emoji',sans-serif;color:var(--text);position:
 .grad{filter:drop-shadow(0 4px 22px rgba(0,0,0,.75));background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
 .pill{align-self:flex-start;font:900 26px Inter;letter-spacing:1.5px;text-transform:uppercase;color:#0a0910;padding:12px 24px;border-radius:40px;background:linear-gradient(90deg,var(--a),var(--b));margin-bottom:44px;box-shadow:0 10px 40px -10px var(--a)}
 .title{font-family:Anton;text-transform:uppercase;line-height:1.02;letter-spacing:.5px;text-shadow:0 6px 30px rgba(0,0,0,.35)}
-.body{font:400 38px/1.45 Inter;color:#dcd7e4;margin-top:34px}
+.body{font:500 44px/1.4 Inter;color:#efeaf5;margin-top:34px;text-shadow:0 2px 12px rgba(0,0,0,.5)}
 .punch{margin-top:38px;align-self:flex-start;font:900 36px/1.3 Inter;color:#0a0910;background:var(--a);padding:10px 20px;transform:rotate(-1.5deg);box-shadow:8px 8px 0 rgba(0,0,0,.45)}
 .card{background:rgba(20,17,30,.55);border:1.5px solid rgba(255,255,255,.12);border-radius:40px;padding:56px;backdrop-filter:blur(24px);box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
 .emoji{position:absolute;right:70px;top:170px;font-size:170px;transform:rotate(12deg);filter:drop-shadow(0 20px 30px rgba(0,0,0,.5));z-index:3}
