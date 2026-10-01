@@ -6,7 +6,10 @@ post.json:
 {
   "palette": 0-3,
   "slides": [
-    {"kind": "cover",  "big": "50", "title": "DAYS UNTIL GTA 6", "body": "...", "sticker": "NEW INFO 🔥", "strip": "NOV 19 · PS5 · XBOX SERIES X|S"},
+    {"kind": "cover",  "big": "50", "title": "DAYS UNTIL GTA 6", "body": "...", "sticker": "NEW INFO 🔥", "strip": "NOV 19 · PS5 · XBOX SERIES X|S"},   (countdown cover, default style)
+    {"kind": "cover", "style": "headline", "sticker": "NEW INFO 🔥", "title": "Big punchy headline", "body": "...", "days": 49},   (photo + big headline at bottom)
+    {"kind": "cover", "style": "poster", "emoji": "🐊", "title": "Florida Man DLC?", "body": "...", "days": 49},   (huge emoji + gradient title)
+    {"kind": "cover", "style": "breaking", "sticker": "BREAKING", "title": "Headline", "body": "...", "days": 49},   (tilted news bar, for big official news)
     {"kind": "news",   "num": "01", "tag": "New info", "emoji": "🌪️", "title": "...", "body": "...", "punch": "...", "source": "..."},
     {"kind": "stat",   "num": "02", "tag": "...", "big": "$400", "title": "...", "body": "...", "punch": "...", "source": "..."},
     {"kind": "tweet",  "name": "Rockstar fans", "handle": "@everyone", "text": "...", "likes": "12.4K", "caption": "..."},
@@ -96,6 +99,8 @@ body{font-family:Inter,'Noto Color Emoji',sans-serif;color:var(--text);position:
 .items{margin-top:40px;display:flex;flex-direction:column;gap:22px}
 .items .it{display:flex;gap:24px;align-items:flex-start;font:600 36px/1.35 Inter}
 .items .it b{flex:none;font-family:Anton;font-weight:400;font-size:44px;width:70px;height:70px;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#0a0910;background:linear-gradient(135deg,var(--a),var(--b))}
+.chip{position:absolute;right:84px;bottom:150px;font:900 28px Inter;letter-spacing:1.5px;padding:12px 22px;border-radius:30px;background:rgba(10,9,16,.7);border:2px solid var(--b);z-index:6}
+.breakbar{position:absolute;left:0;right:0;top:170px;background:var(--a);color:#0a0910;font-family:Anton;font-size:90px;letter-spacing:6px;text-align:center;padding:14px 0;transform:rotate(-3deg) scale(1.1);box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:6}
 .strip{position:absolute;left:0;right:0;bottom:170px;text-align:center;z-index:5}
 .strip span{font:900 26px Inter;letter-spacing:2px;padding:14px 28px;border-radius:40px;border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);backdrop-filter:blur(10px)}
 """
@@ -124,7 +129,7 @@ def photo_for(s, i, key, photos_on):
     if not choice or choice not in files:
         h = int(hashlib.md5(key.encode()).hexdigest(), 16)
         choice = files[(h + i * 7) % len(files)]
-    strong = s["kind"] == "cover"
+    strong = s["kind"] == "cover" and s.get("style") != "poster"
     return f'<div class="photo {"strong" if strong else "dim"}" style="background-image:url(\'file://{os.path.join(BGDIR, choice)}\')"></div>'
 
 
@@ -147,7 +152,28 @@ def slide_html(s, i, n, key="", photos_on=False):
     if ph:
         out = out.replace('<div class="bg">', '<div class="bg" style="opacity:.35">')
     src = f'<div class="source">Source: {e(s["source"])}</div>' if s.get("source") else ""
-    if k == "cover":
+    if k == "cover" and s.get("style") in ("headline", "poster", "breaking"):
+        st = s["style"]
+        chip = f'<div class="chip">⏳ {e(s["days"])} DAYS LEFT</div>' if s.get("days") else ""
+        if st == "headline":
+            out += f'''<div class="content" style="justify-content:flex-end;padding-bottom:40px">
+              {f'<div class="pill">{e(s["sticker"])}</div>' if s.get("sticker") else ""}
+              <div class="title" data-fit="150" data-lines="3" style="width:100%">{e(s["title"])}</div>
+              {f'<div class="body" style="margin-top:22px">{e(s["body"])}</div>' if s.get("body") else ""}
+            </div>{chip}'''
+        elif st == "poster":
+            out += f'''<div class="content" style="align-items:center;text-align:center">
+              <div style="font-size:300px;line-height:1;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))">{e(s.get("emoji","🌴"))}</div>
+              <div class="title grad" data-fit="150" data-lines="2" style="width:100%;margin-top:40px">{e(s["title"])}</div>
+              {f'<div class="body" style="margin-top:22px">{e(s["body"])}</div>' if s.get("body") else ""}
+            </div>{chip}'''
+        else:
+            out += f'''<div class="breakbar">{e(s.get("sticker","BREAKING"))}</div>
+            <div class="content" style="justify-content:center">
+              <div class="title" data-fit="160" data-lines="3" style="width:100%;background:rgba(10,9,16,.72);padding:28px 34px;border-left:14px solid var(--a)">{e(s["title"])}</div>
+              {f'<div class="body" style="margin-top:26px">{e(s["body"])}</div>' if s.get("body") else ""}
+            </div>{chip}'''
+    elif k == "cover":
         out += f'<div class="outline" style="font-size:520px;left:-40px;top:560px">{e(s.get("big",""))}</div>'
         if s.get("sticker"):
             out += f'<div class="sticker" style="right:90px;top:210px">{e(s["sticker"])}</div>'
